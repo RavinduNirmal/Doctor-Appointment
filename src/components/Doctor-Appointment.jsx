@@ -20,6 +20,7 @@ import { message } from "antd";
 
 // Placeholder images (replace with actual doctor-related images)
 import doctorImage from "../assets/images/close-up-health-worker.jpg";
+import backgroundImage from "../assets/images/background.jpg";
 const serviceImage1 = "https://via.placeholder.com/300x200?text=Service+1";
 const serviceImage2 = "https://via.placeholder.com/300x200?text=Service+2";
 const serviceImage3 = "https://via.placeholder.com/300x200?text=Service+3";
@@ -173,9 +174,9 @@ const DoctorPortfolio = () => {
           elevation={sticky ? 4 : 0}
         >
           <Toolbar>
-            <Typography variant="h4" sx={{ flexGrow: 1, fontWeight: "bold" }}>
+            <Typography variant="h4" sx={{ flexGrow: 1, fontWeight: "bold", color: theme.palette.secondary.main }}>
               Dr.{" "}
-              <span style={{ color: theme.palette.secondary.main }}>John</span>
+              <span style={{color:"#fff"}}>John</span>
             </Typography>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               {menuLinks.map((menu, i) => (
@@ -216,7 +217,11 @@ const DoctorPortfolio = () => {
           sx={{
             minHeight: "70vh",
             py: { xs: 6, md: 6 },
-            backgroundColor: "#F0FFFF",
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            position: "relative",
           }}
         >
           <Container>
@@ -276,7 +281,7 @@ const DoctorPortfolio = () => {
                 sx={{
                   display: "flex",
                   justifyContent: { xs: "center", md: "center" },
-                  ml: { md: 4 },
+                  ml: { md: 12 },
                 }}
               >
                 <CardMedia
@@ -288,6 +293,7 @@ const DoctorPortfolio = () => {
                     width: "100%",
                     maxWidth: 400,
                     mx: "auto",
+                    boxShadow: 3,
                   }}
                 />
               </Grid>
@@ -296,55 +302,125 @@ const DoctorPortfolio = () => {
         </Box>
 
         {/* About Section */}
-        <Box id="about" sx={{ py: 10, bgcolor: "white" }}>
+        <Box id="about" sx={{ py: { xs: 8, md: 12 }, bgcolor: "white" }}>
           <Container>
-            <Typography variant="h3" align="center" gutterBottom>
+            <Typography
+              variant="h3"
+              align="center"
+              gutterBottom
+              sx={{ color: "primary.main" }}
+            >
               About{" "}
-              <span style={{ color: theme.palette.primary.main }}>Me</span>
+              <Box component="span" sx={{ color: "gray" }}>
+                Me
+              </Box>
             </Typography>
+
             <Typography
               variant="body1"
               align="center"
-              color="textSecondary"
-              sx={{ mb: 4 }}
+              color="text.secondary"
+              sx={{ mb: 6 }}
             >
               My Professional Journey
             </Typography>
-            <Grid container spacing={4}>
-              <Grid item xs={12} md={6}>
-                <CardMedia
-                  component="img"
-                  image={doctorImage}
-                  alt="Dr. John"
-                  sx={{ borderRadius: 4, maxWidth: "80%", mx: "auto" }}
-                />
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Typography variant="body1" paragraph>
+
+            <Grid container justifyContent="center">
+              <Grid
+                item
+                xs={12}
+                md={8}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  textAlign: "center",
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  sx={{
+                    mb: 3,
+                    color: "text.primary",
+                    lineHeight: 1.8,
+                    textAlign: "justify",
+                    fontSize: {
+                      xs: 16, // for mobile
+                      sm: 18, // for tablets
+                      md: 18, // for medium screens
+                      lg: 20, // for large screens
+                      xl: 23, // for extra large screens
+                    },
+                    px: {
+                      xs: 2, // horizontal padding for mobile
+                      sm: 3, // slightly more for tablets
+                      md: 0, // no padding on medium and above (since Grid is already centered)
+                    },
+                  }}
+                >
                   Dr. John Smith is a dedicated physician with over 15 years of
                   experience in providing high-quality medical care.
                   Specializing in internal medicine, cardiology, and pediatrics,
                   he is committed to improving patient outcomes through
                   compassionate and evidence-based practices.
                 </Typography>
-                <Grid container spacing={2} sx={{ mt: 4 }}>
+
+                {/* Stats */}
+                <Grid
+                  container
+                  spacing={3}
+                  justifyContent="center"
+                  sx={{
+                    mb: 4,
+                    mt: {
+                      md: 2, // for medium screens
+                      lg: 2, // for large screens
+                      xl: 2,
+                    },
+                  }}
+                >
                   {info.map((item, i) => (
-                    <Grid item xs={4} key={i}>
-                      <Typography variant="h4" color="primary">
+                    <Grid
+                      item
+                      xs={6}
+                      sm={4}
+                      key={i}
+                      sx={{ textAlign: "center" }}
+                    >
+                      <Typography
+                        variant="h4"
+                        color="primary"
+                        sx={{ fontWeight: 600 }}
+                      >
                         {item.count}
                       </Typography>
-                      <Typography variant="body2">{item.text}</Typography>
+                      <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        sx={{
+                          fontSize: {
+                            xs: 12, // for mobile
+                            sm: 14, // for tablets
+                            md: 16, // for medium screens
+                            lg: 19, // for large screens
+                            xl: 20, // for extra large screens
+                          },
+                        }}
+                      >
+                        {item.text}
+                      </Typography>
                     </Grid>
                   ))}
                 </Grid>
+
                 <Button
                   variant="contained"
                   color="primary"
-                  sx={{ mt: 4 }}
+                  size="large"
                   href="/path/to/cv.pdf"
                   download
                 >
-                  Download CV
+                  Check Testimonial
                 </Button>
               </Grid>
             </Grid>
