@@ -281,7 +281,7 @@ const DoctorPortfolio = () => {
                 sx={{
                   display: "flex",
                   justifyContent: { xs: "center", md: "center" },
-                  ml: { md: 12 },
+                  ml: { md: 10 },
                 }}
               >
                 <CardMedia
