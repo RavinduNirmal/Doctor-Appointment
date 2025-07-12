@@ -672,7 +672,7 @@ const DoctorPortfolio = () => {
                     required
                     sx={{
                       "& .MuiOutlinedInput-root": {
-                        borderRadius: 3, 
+                        borderRadius: 3,
                       },
                     }}
                   />
@@ -687,27 +687,27 @@ const DoctorPortfolio = () => {
                     required
                     sx={{
                       "& .MuiOutlinedInput-root": {
-                        borderRadius: 3, 
+                        borderRadius: 3,
                       },
                     }}
                   />
                   {formError && (
                     <Typography color="error">{formError}</Typography>
                   )}
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    color="primary"
-                    size="large"
-                    sx={{
-                      alignSelf: "flex-start",
-                      px: 4,
-                      py: 1.5,
-                      fontWeight: 500,
-                    }}
-                  >
-                    Send Message
-                  </Button>
+                  <Box sx={{ display: "flex", justifyContent: "center" }}>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      color="primary"
+                      sx={{
+                        px: 4,
+                        py: 1.5,
+                        fontWeight: 500,
+                      }}
+                    >
+                      Send Message
+                    </Button>
+                  </Box>
                 </Box>
               </Grid>
 
