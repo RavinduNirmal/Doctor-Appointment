@@ -174,9 +174,15 @@ const DoctorPortfolio = () => {
           elevation={sticky ? 4 : 0}
         >
           <Toolbar>
-            <Typography variant="h4" sx={{ flexGrow: 1, fontWeight: "bold", color: theme.palette.secondary.main }}>
-              Dr.{" "}
-              <span style={{color:"#fff"}}>John</span>
+            <Typography
+              variant="h4"
+              sx={{
+                flexGrow: 1,
+                fontWeight: "bold",
+                color: theme.palette.secondary.main,
+              }}
+            >
+              Dr. <span style={{ color: "#fff" }}>John</span>
             </Typography>
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               {menuLinks.map((menu, i) => (
@@ -430,7 +436,12 @@ const DoctorPortfolio = () => {
         {/* Services Section */}
         <Box id="services" sx={{ py: 10, bgcolor: "background.default" }}>
           <Container>
-            <Typography variant="h3" align="center" gutterBottom sx={{color:"gray"}}>
+            <Typography
+              variant="h3"
+              align="center"
+              gutterBottom
+              sx={{ color: "gray" }}
+            >
               My{" "}
               <span style={{ color: theme.palette.primary.main }}>
                 Services
@@ -481,11 +492,13 @@ const DoctorPortfolio = () => {
         {/* Appointment Booking Section */}
         <Box id="appointments" sx={{ py: 10, bgcolor: "white" }}>
           <Container>
-            <Typography variant="h3" align="center" gutterBottom sx={{color: theme.palette.primary.main}}>
-              Book an{" "}
-              <span style={{color:"gray"}}>
-                Appointment
-              </span>
+            <Typography
+              variant="h3"
+              align="center"
+              gutterBottom
+              sx={{ color: theme.palette.primary.main }}
+            >
+              Book an <span style={{ color: "gray" }}>Appointment</span>
             </Typography>
             <Typography
               variant="body1"
@@ -583,26 +596,58 @@ const DoctorPortfolio = () => {
         </Box>
 
         {/* Contact Section */}
-        <Box id="contact" sx={{ py: 10, bgcolor: "background.default" }}>
-          <Container>
-            <Typography variant="h3" align="center" gutterBottom>
+        <Box
+          id="contact"
+          sx={{ py: { xs: 8, md: 12 }, bgcolor: "background.default" }}
+        >
+          <Container maxWidth="md">
+            {/* Heading */}
+            <Typography
+              variant="h3"
+              align="center"
+              gutterBottom
+              sx={{ color: "gray" }}
+            >
               Contact{" "}
-              <span style={{ color: theme.palette.primary.main }}>Me</span>
+              <Box component="span" sx={{ color: "primary.main" }}>
+                Me
+              </Box>
             </Typography>
+
             <Typography
               variant="body1"
               align="center"
-              color="textSecondary"
-              sx={{ mb: 4 }}
+              color="text.secondary"
+              sx={{ mb: 6 }}
             >
               Get in Touch
             </Typography>
-            <Grid container spacing={4}>
+
+            {/* Layout Grid */}
+            <Grid
+              container
+              spacing={6}
+              justifyContent="center"
+              sx={{
+                borderRadius: { xs: 3, sm: 0 },
+                bgcolor: { xs: "none", sm: "background.paper" },
+                boxShadow: { xs: 0, sm: "none" },
+              }}
+            >
+              {/* Form Section */}
               <Grid item xs={12} md={6}>
                 <Box
                   component="form"
                   onSubmit={sendEmail}
-                  sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 3,
+                    p: { xs: 2, sm: 3 },
+                    borderRadius: { xs: 3, sm: 0 },
+                    bgcolor: { xs: "background.paper", sm: "transparent" },
+                    boxShadow: { xs: 3, sm: "none" },
+                  }}
                 >
                   <TextField
                     label="Your Name"
@@ -610,6 +655,12 @@ const DoctorPortfolio = () => {
                     value={formData.user_name}
                     onChange={handleFormChange}
                     fullWidth
+                    required
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: 3, // adjust for more or less roundness
+                      },
+                    }}
                   />
                   <TextField
                     label="Your Email"
@@ -618,14 +669,27 @@ const DoctorPortfolio = () => {
                     value={formData.user_email}
                     onChange={handleFormChange}
                     fullWidth
+                    required
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: 3, 
+                      },
+                    }}
                   />
-                  <TextareaAutosize
-                    minRows={6}
-                    placeholder="Your Message"
+                  <TextField
+                    label="Your Message"
                     name="message"
                     value={formData.message}
                     onChange={handleFormChange}
-                    style={{ width: "100%", padding: 8 }}
+                    multiline
+                    rows={5}
+                    fullWidth
+                    required
+                    sx={{
+                      "& .MuiOutlinedInput-root": {
+                        borderRadius: 3, 
+                      },
+                    }}
                   />
                   {formError && (
                     <Typography color="error">{formError}</Typography>
@@ -634,29 +698,52 @@ const DoctorPortfolio = () => {
                     type="submit"
                     variant="contained"
                     color="primary"
-                    sx={{ width: "fit-content" }}
+                    size="large"
+                    sx={{
+                      alignSelf: "flex-start",
+                      px: 4,
+                      py: 1.5,
+                      fontWeight: 500,
+                    }}
                   >
                     Send Message
                   </Button>
                 </Box>
               </Grid>
+
+              {/* Contact Info Section */}
               <Grid item xs={12} md={6}>
-                <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 4,
+                    justifyContent: "center",
+                    height: "100%",
+                    px: { xs: 2, sm: 3 },
+                  }}
+                >
                   {contactInfo.map((contact, i) => (
                     <Box
                       key={i}
-                      sx={{ display: "flex", alignItems: "center", gap: 2 }}
+                      sx={{ display: "flex", alignItems: "center", gap: 3 }}
                     >
                       <Box
                         sx={{
                           bgcolor: "primary.main",
-                          p: 1,
+                          p: 1.5,
                           borderRadius: "50%",
+                          color: "white",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
                         }}
                       >
                         {contact.logo}
                       </Box>
-                      <Typography>{contact.text}</Typography>
+                      <Typography variant="body1" color="text.primary">
+                        {contact.text}
+                      </Typography>
                     </Box>
                   ))}
                 </Box>
