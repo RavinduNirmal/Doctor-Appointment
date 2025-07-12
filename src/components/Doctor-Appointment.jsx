@@ -24,6 +24,9 @@ import backgroundImage from "../assets/images/background.jpg";
 import serviceImage1 from "../assets/images/doctor-checking-medical-condition-patient.jpg";
 import serviceImage2 from "../assets/images/middle-age-hispanic-man-wearing-doctor-uniform-auscultating-heart-clinic.jpg";
 import serviceImage3 from "../assets/images/doctor-doing-their-work-pediatrics-office.jpg";
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { Avatar } from '@mui/material';
+
 
 const theme = createTheme({
   palette: {
@@ -71,15 +74,36 @@ const DoctorPortfolio = () => {
   ];
 
   const contactInfo = [
-    { logo: <EmailIcon />, text: "dr.john@example.com" },
-    { logo: <PhoneIcon />, text: "+1 234 567 8900" },
-    { logo: <LocationOnIcon />, text: "123 Health St, Medical City" },
+    { logo: <EmailIcon />, text: "dr.john@gmail.com" },
+    { logo: <PhoneIcon />, text: "+94 71 6468713" },
+    { logo: <LocationOnIcon />, text: "123 Health St, Medical City,Anuradhapura" },
   ];
 
   const info = [
     { text: "Years Experience", count: "15" },
     { text: "Patients Treated", count: "5000+" },
     { text: "Specializations", count: "3" },
+  ];
+
+    const testimonials = [
+    { 
+      name: "Sarah Johnson", 
+      text: " Dr. John provided exceptional care during my treatment. His expertise and compassion made all the difference.",
+      role: "Patient",
+      photo: serviceImage1
+    },
+    { 
+      name: "Michael Chen", 
+      text: " I was impressed by Dr. John's thoroughness and ability to explain complex medical terms understandable way.",
+      role: "Patient",
+      photo: serviceImage1
+    },
+    { 
+      name: "Emily Davis", 
+      text: " The best doctor I've ever had! Dr. John truly cares about his patients and goes above and beyond.",
+      role: "Patient",
+      photo: serviceImage1
+    },
   ];
 
   useEffect(() => {
@@ -423,7 +447,7 @@ const DoctorPortfolio = () => {
                   variant="contained"
                   color="primary"
                   size="large"
-                  href="/path/to/cv.pdf"
+                  href="#testimonials"
                   download
                 >
                   Check Testimonial
@@ -749,6 +773,108 @@ const DoctorPortfolio = () => {
                 </Box>
               </Grid>
             </Grid>
+          </Container>
+        </Box>
+
+        {/* Testimonial Section */}
+        <Box id="testimonials" sx={{ py: 10, bgcolor: "white" }}>
+          <Container>
+            <Typography
+              variant="h3"
+              align="center"
+              gutterBottom
+              sx={{ color: theme.palette.primary.main }}
+            >
+              Patient <span style={{ color: "gray" }}>Testimonials</span>
+            </Typography>
+            <Typography
+              variant="body1"
+              align="center"
+              color="textSecondary"
+              sx={{ mb: 4 }}
+            >
+              What My Patients Say
+            </Typography>
+            <Swiper
+              slidesPerView={1}
+              spaceBetween={20}
+              breakpoints={{
+                768: { slidesPerView: 2 },
+                500: { slidesPerView: 1 },
+              }}
+              loop={true}
+              autoplay={{ delay: 5000 }}
+              pagination={{ clickable: true }}
+              modules={[Pagination, Autoplay]}
+            >
+              {testimonials.map((testimonial, i) => (
+                <SwiperSlide key={i}>
+                  <Card
+                    sx={{ m: 2, bgcolor: "background.paper", boxShadow: 3 }}
+                  >
+                    <CardContent>
+                      {/* Top-left user info row */}
+                      <Box
+                        sx={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: 2,
+                          mb: 2,
+                        }}
+                      >
+                        <Avatar
+                          src={testimonial.photo}
+                          alt={testimonial.name}
+                          sx={{ width: 56, height: 56 }}
+                        />
+                        <Box>
+                          <Typography
+                            variant="h6"
+                            color="primary"
+                            sx={{ fontWeight: 600 }}
+                          >
+                            {testimonial.name}
+                          </Typography>
+                          <Typography variant="body2" color="text.secondary">
+                            {testimonial.role}
+                          </Typography>
+                        </Box>
+                      </Box>
+
+                      {/* Testimonial with large quotation marks */}
+                      <Typography
+                        variant="body1"
+                        sx={{
+                          fontStyle: "italic",
+                          position: "relative",
+                          fontSize: { xs: 16, sm: 18 },
+                          px: 2,
+                          lineHeight: 1.8,
+                          "&::before": {
+                            content: '"“"',
+                            position: "absolute",
+                            left: 0,
+                            top: -10,
+                            fontSize: "2.5rem",
+                            color: "primary.main",
+                          },
+                          "&::after": {
+                            content: '"”"',
+                            position: "absolute",
+                            right: 0,
+                            bottom: -10,
+                            fontSize: "2.5rem",
+                            color: "primary.main",
+                          },
+                        }}
+                      >
+                        {testimonial.text}
+                      </Typography>
+                    </CardContent>
+                  </Card>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </Container>
         </Box>
 
