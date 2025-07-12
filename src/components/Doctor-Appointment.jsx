@@ -21,9 +21,9 @@ import { message } from "antd";
 // Placeholder images (replace with actual doctor-related images)
 import doctorImage from "../assets/images/close-up-health-worker.jpg";
 import backgroundImage from "../assets/images/background.jpg";
-const serviceImage1 = "https://via.placeholder.com/300x200?text=Service+1";
-const serviceImage2 = "https://via.placeholder.com/300x200?text=Service+2";
-const serviceImage3 = "https://via.placeholder.com/300x200?text=Service+3";
+import serviceImage1 from "../assets/images/doctor-checking-medical-condition-patient.jpg";
+import serviceImage2 from "../assets/images/middle-age-hispanic-man-wearing-doctor-uniform-auscultating-heart-clinic.jpg";
+import serviceImage3 from "../assets/images/doctor-doing-their-work-pediatrics-office.jpg";
 
 const theme = createTheme({
   palette: {
@@ -430,7 +430,7 @@ const DoctorPortfolio = () => {
         {/* Services Section */}
         <Box id="services" sx={{ py: 10, bgcolor: "background.default" }}>
           <Container>
-            <Typography variant="h3" align="center" gutterBottom>
+            <Typography variant="h3" align="center" gutterBottom sx={{color:"gray"}}>
               My{" "}
               <span style={{ color: theme.palette.primary.main }}>
                 Services
@@ -481,9 +481,9 @@ const DoctorPortfolio = () => {
         {/* Appointment Booking Section */}
         <Box id="appointments" sx={{ py: 10, bgcolor: "white" }}>
           <Container>
-            <Typography variant="h3" align="center" gutterBottom>
+            <Typography variant="h3" align="center" gutterBottom sx={{color: theme.palette.primary.main}}>
               Book an{" "}
-              <span style={{ color: theme.palette.primary.main }}>
+              <span style={{color:"gray"}}>
                 Appointment
               </span>
             </Typography>
